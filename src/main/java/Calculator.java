@@ -26,7 +26,7 @@ public class Calculator implements ActionListener {
    Font numberFont = new Font("Times New Roman", Font.BOLD,30);
    Font functionFont = new Font("Times New Roman", Font.PLAIN,20);
 
-   double num1 = 0, num2 = 0, result = 0;
+   double num1 = 0, num2 = 0, result = 0, pi = 3.14159d;
    char operator;
    String operator1;
 
@@ -50,90 +50,14 @@ public class Calculator implements ActionListener {
        textField.setEditable(false);
        textField.setBorder(BorderFactory.createBevelBorder(0));
        textField.setBackground(new Color(255, 255, 255));
-       
+
        //izveido visu pogu nosaukumus
        //create all button titles
-
-       //pirmā rinda
-       //first row
-       secondButton = new JButton("2nd");
-       piButton = new JButton("π");
-       eButton = new JButton("e");
-       clearButton = new JButton("C");
-       deleteButton = new JButton("Del");
-
-       //otrā rinda
-       //second row
-       squareOfTwoButton = new JButton("x2");
-       oneDividedByButton = new JButton("1/x");
-       absoluteValueButton = new JButton("|x|");
-       expButton = new JButton("exp");
-       modButton = new JButton("mod");
-
-       //trešā rinda
-       //third row
-       squareRootButton = new JButton("2√x" );
-       leftBracketButton = new JButton("(");
-       rightBracketButton = new JButton(")");
-       factorialButton = new JButton("n!");
-       divisionButton = new JButton("/");
-
-       //ceturtā rinda
-       //fourth row
-       squareOfXAndYButton = new JButton("xy");
-       multiplicationButton = new JButton("*");
-
-       //piektā rinda
-       //fifth row
-       squareOfTenButton = new JButton("10x");
-       subtractionButton = new JButton("-");
-
-       //sestā rinda
-       //sixth row
-       logButton = new JButton("log");
-       additionButton = new JButton("+");
-
-       //septītā rinda
-       //sevenths row
-       lnButton = new JButton("ln");
-       negativeButton = new JButton("(-)");
-       decimalButton = new JButton(".");
-       equalsButton = new JButton("=");
+       createButtonNames();
 
        //nosaka functionButton indeksus
        //create functionButton indexes
-       functionButtons[0] = secondButton;
-       functionButtons[1] = piButton;
-       functionButtons[2] = eButton;
-       functionButtons[3] = clearButton;
-       functionButtons[4] = deleteButton;
-
-       functionButtons[5] = squareOfTwoButton;
-       functionButtons[6] = oneDividedByButton;
-       functionButtons[7] = absoluteValueButton;
-       functionButtons[8] = expButton;
-       functionButtons[9] = modButton;
-
-       functionButtons[10] = squareRootButton;
-       functionButtons[11] = leftBracketButton;
-       functionButtons[12] = rightBracketButton;
-       functionButtons[13] = factorialButton;
-       functionButtons[14] = divisionButton;
-
-       functionButtons[15] = squareOfXAndYButton;
-       functionButtons[16] = multiplicationButton;
-
-       functionButtons[17] = squareOfTenButton;
-       functionButtons[18] = subtractionButton;
-
-       functionButtons[19] = logButton;
-       functionButtons[20] = additionButton;
-
-       functionButtons[21] = lnButton;
-       functionButtons[22] = negativeButton;
-       functionButtons[23] = subtractionButton;
-       functionButtons[24] = decimalButton;
-       functionButtons[25] = equalsButton;
+       createFunctionButtonIndex();
 
        //cilpa priekš funkciju pogām = 26 reizes
        //loop for functionButtons = 26 times
@@ -165,52 +89,146 @@ public class Calculator implements ActionListener {
 
        //deklarē pogas, kur kura atrodas pēc kārtas paneļa rāmī
        //put all buttons in the right places
-       panel.add(secondButton);
-       panel.add(piButton);
-       panel.add(eButton);
-       panel.add(clearButton);
-       panel.add(deleteButton);
-
-       panel.add(squareOfTwoButton);
-       panel.add(oneDividedByButton);
-       panel.add(absoluteValueButton);
-       panel.add(expButton);
-       panel.add(modButton);
-
-       panel.add(squareRootButton);
-       panel.add(leftBracketButton);
-       panel.add(rightBracketButton);
-       panel.add(factorialButton);
-       panel.add(divisionButton);
-
-       panel.add(squareOfXAndYButton);
-       panel.add(numberButtons[7]);
-       panel.add(numberButtons[8]);
-       panel.add(numberButtons[9]);
-       panel.add(multiplicationButton);
-
-       panel.add(squareOfTenButton);
-       panel.add(numberButtons[4]);
-       panel.add(numberButtons[5]);
-       panel.add(numberButtons[6]);
-       panel.add(subtractionButton);
-
-       panel.add(logButton);
-       panel.add(numberButtons[1]);
-       panel.add(numberButtons[2]);
-       panel.add(numberButtons[3]);
-       panel.add(additionButton);
-
-       panel.add(lnButton);
-       panel.add(negativeButton);
-       panel.add(numberButtons[0]);
-       panel.add(decimalButton);
-       panel.add(equalsButton);
+       buttonPlacementOnTheFrame();
 
        frame.add(panel);
        frame.add(textField);
        frame.setVisible(true);
    }
+
+    private void buttonPlacementOnTheFrame() {
+        //deklarē pogas, kur kura atrodas pēc kārtas paneļa rāmī
+        //put all buttons in the right places
+        panel.add(secondButton);
+        panel.add(piButton);
+        panel.add(eButton);
+        panel.add(clearButton);
+        panel.add(deleteButton);
+
+        panel.add(squareOfTwoButton);
+        panel.add(oneDividedByButton);
+        panel.add(absoluteValueButton);
+        panel.add(expButton);
+        panel.add(modButton);
+
+        panel.add(squareRootButton);
+        panel.add(leftBracketButton);
+        panel.add(rightBracketButton);
+        panel.add(factorialButton);
+        panel.add(divisionButton);
+
+        panel.add(squareOfXAndYButton);
+        panel.add(numberButtons[7]);
+        panel.add(numberButtons[8]);
+        panel.add(numberButtons[9]);
+        panel.add(multiplicationButton);
+
+        panel.add(squareOfTenButton);
+        panel.add(numberButtons[4]);
+        panel.add(numberButtons[5]);
+        panel.add(numberButtons[6]);
+        panel.add(subtractionButton);
+
+        panel.add(logButton);
+        panel.add(numberButtons[1]);
+        panel.add(numberButtons[2]);
+        panel.add(numberButtons[3]);
+        panel.add(additionButton);
+
+        panel.add(lnButton);
+        panel.add(negativeButton);
+        panel.add(numberButtons[0]);
+        panel.add(decimalButton);
+        panel.add(equalsButton);
+    }
+
+    private void createFunctionButtonIndex() {
+        //nosaka functionButton indeksus
+        //create functionButton indexes
+        functionButtons[0] = secondButton;
+        functionButtons[1] = piButton;
+        functionButtons[2] = eButton;
+        functionButtons[3] = clearButton;
+        functionButtons[4] = deleteButton;
+
+        functionButtons[5] = squareOfTwoButton;
+        functionButtons[6] = oneDividedByButton;
+        functionButtons[7] = absoluteValueButton;
+        functionButtons[8] = expButton;
+        functionButtons[9] = modButton;
+
+        functionButtons[10] = squareRootButton;
+        functionButtons[11] = leftBracketButton;
+        functionButtons[12] = rightBracketButton;
+        functionButtons[13] = factorialButton;
+        functionButtons[14] = divisionButton;
+
+        functionButtons[15] = squareOfXAndYButton;
+        functionButtons[16] = multiplicationButton;
+
+        functionButtons[17] = squareOfTenButton;
+        functionButtons[18] = subtractionButton;
+
+        functionButtons[19] = logButton;
+        functionButtons[20] = additionButton;
+
+        functionButtons[21] = lnButton;
+        functionButtons[22] = negativeButton;
+        functionButtons[23] = subtractionButton;
+        functionButtons[24] = decimalButton;
+        functionButtons[25] = equalsButton;
+    }
+
+    private void createButtonNames() {
+        //izveido visu pogu nosaukumus
+        //create all button titles
+
+        //pirmā rinda
+        //first row
+        secondButton = new JButton("2nd");
+        piButton = new JButton("π");
+        eButton = new JButton("e");
+        clearButton = new JButton("C");
+        deleteButton = new JButton("Del");
+
+        //otrā rinda
+        //second row
+        squareOfTwoButton = new JButton("x2");
+        oneDividedByButton = new JButton("1/x");
+        absoluteValueButton = new JButton("|x|");
+        expButton = new JButton("exp");
+        modButton = new JButton("mod");
+
+        //trešā rinda
+        //third row
+        squareRootButton = new JButton("2√x" );
+        leftBracketButton = new JButton("(");
+        rightBracketButton = new JButton(")");
+        factorialButton = new JButton("n!");
+        divisionButton = new JButton("/");
+
+        //ceturtā rinda
+        //fourth row
+        squareOfXAndYButton = new JButton("xy");
+        multiplicationButton = new JButton("*");
+
+        //piektā rinda
+        //fifth row
+        squareOfTenButton = new JButton("10x");
+        subtractionButton = new JButton("-");
+
+        //sestā rinda
+        //sixth row
+        logButton = new JButton("log");
+        additionButton = new JButton("+");
+
+        //septītā rinda
+        //sevenths row
+        lnButton = new JButton("ln");
+        negativeButton = new JButton("+/-");
+        decimalButton = new JButton(".");
+        equalsButton = new JButton("=");
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -244,16 +262,6 @@ public class Calculator implements ActionListener {
             operator = '/';
             textField.setText("");
         }
-        if (e.getSource() == leftBracketButton){
-            num1 = Double.parseDouble(textField.getText());
-            operator = '(';
-            textField.setText("");
-        }
-        if (e.getSource() == rightBracketButton){
-            num1 = Double.parseDouble(textField.getText());
-            operator = ')';
-            textField.setText("");
-        }
         if (e.getSource() == factorialButton){
             num1 = Double.parseDouble(textField.getText());
             operator1 = "n!";
@@ -279,6 +287,13 @@ public class Calculator implements ActionListener {
             operator1 = "xy";
             textField.setText("");
         }
+
+        /*if (e.getSource() == leftBracketButton){
+            num1 = Double.parseDouble(textField.getText());
+            operator = '(';
+            textField.setText("");
+        }*/
+
         if (e.getSource() == squareRootButton){
             num1 = Double.parseDouble(textField.getText());
             operator1 = "2√x";
@@ -325,11 +340,9 @@ public class Calculator implements ActionListener {
             textField.setText("");
         }
 
-
         //showing the results
-
         //works
-        if (e.getSource()==equalsButton){
+        if (e.getSource() == equalsButton){
             num2 = Double.parseDouble(textField.getText());
             switch (operator){
                 case '+':
@@ -383,30 +396,80 @@ public class Calculator implements ActionListener {
             temporarily*=-1;
             textField.setText(String.valueOf(temporarily));
         }
-
-        //doesn't work
-        if (e.getSource() == leftBracketButton){
-
+        if (e.getSource() == squareOfTenButton){
+            if (num1 == 0){
+                result = 1;
+            } else if (num1 == 1){
+                result = 10;
+            } else if (num1 == 2){
+                result = 100;
+            }else if (num1 == 3){
+                result = 1000;
+            }else if (num1 == 4){
+                result = 10000;
+            }else if (num1 == 5){
+                result = 100000;
+            }else if (num1 == 6){
+                result = 1000000;
+            }else if (num1 == 7){
+                result = 10000000;
+            }else if (num1 == 8){
+                result = 100000000;
+            }else if (num1 == 9){
+                result = 1000000000;
+            }else if (num1 == 10) {
+                result = 10000000000d;
+            }
             textField.setText(String.valueOf(result));
         }
-        if (e.getSource() == rightBracketButton){
-
+        if (e.getSource() == piButton){
+            result = pi * num1;
             textField.setText(String.valueOf(result));
         }
         if (e.getSource() == factorialButton){
-
+            if (num1 == 0){
+                result = 1;
+            }else if (num1 == 1){
+                result = 1;
+            }else if (num1 == 2){
+                result = 1*2;
+            }else if (num1 == 3){
+                result = 1*2*3;
+            }else if (num1 == 4){
+                result = 1*2*3*4;
+            }else if (num1 == 5){
+                result = 1*2*3*4*5;
+            }else if (num1 == 6){
+                result = 1*2*3*4*5*6;
+            }else if (num1 == 7){
+                result = 1*2*3*4*5*6*7;
+            }else if (num1 == 8) {
+                result = 1*2*3*4*5*6*7*8;
+            }else if (num1 == 9) {
+                result = 1*2*3*4*5*6*7*8*9;
+            }else if (num1 == 10) {
+                result = 1*2*3*4*5*6*7*8*9*10;
+            }
             textField.setText(String.valueOf(result));
         }
+
+
+        if (e.getSource() == leftBracketButton){
+            textField.setText(textField.getText().concat("("));
+            textField.setVisible(true);
+        }
+        if (e.getSource() == rightBracketButton){
+            textField.setText(textField.getText().concat(")"));
+            textField.setVisible(true);
+        }
+
+        //doesn't work
         if (e.getSource() == lnButton){
 
             textField.setText(String.valueOf(result));
         }
         if (e.getSource() == logButton){
             result = Math.log(num1);
-            textField.setText(String.valueOf(result));
-        }
-        if (e.getSource() == squareOfTenButton){
-
             textField.setText(String.valueOf(result));
         }
         if (e.getSource() == squareOfXAndYButton){
@@ -419,11 +482,6 @@ public class Calculator implements ActionListener {
         }
         if (e.getSource() == modButton){
 
-            textField.setText(String.valueOf(result));
-        }
-        if (e.getSource() == piButton){
-            //piButton = 3.14159;
-            //result = num1 * piButton;
             textField.setText(String.valueOf(result));
         }
         if (e.getSource() == eButton){
